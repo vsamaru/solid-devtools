@@ -1,0 +1,91 @@
+{
+  "name": "solid-devtools",
+  "version": "0.23.1",
+  "description": "Runtime library for hooking up SolidJS application with Solid Devtools Extension",
+  "license": "MIT",
+  "author": "Damian Tarnawski <gthetarnav@gmail.com>",
+  "contributors": [],
+  "homepage": "https://github.com/thetarnav/solid-devtools/tree/main/packages/main#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thetarnav/solid-devtools.git"
+  },
+  "bugs": {
+    "url": "https://github.com/thetarnav/solid-devtools/issues"
+  },
+  "keywords": [
+    "solid",
+    "devtools",
+    "reactivity",
+    "extension",
+    "chrome"
+  ],
+  "private": false,
+  "sideEffects": true,
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "main": "./dist/server.cjs",
+  "module": "./dist/server.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "browser": {
+        "development": {
+          "import": "./dist/index.js",
+          "require": "./dist/index.cjs"
+        },
+        "import": "./dist/server.js",
+        "require": "./dist/server.cjs"
+      },
+      "development": {
+        "import": "./dist/index.js",
+        "require": "./dist/index.cjs"
+      },
+      "import": "./dist/server.js",
+      "require": "./dist/server.cjs",
+      "types": "./dist/index.d.ts"
+    },
+    "./vite": {
+      "import": "./dist/vite.js",
+      "require": "./dist/vite.cjs",
+      "types": "./dist/vite.d.ts"
+    },
+    "./bridge": {
+      "import": "./dist/bridge.js",
+      "require": "./dist/bridge.cjs",
+      "types": "./dist/bridge.d.ts"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "vite": [
+        "./dist/vite.d.ts"
+      ],
+      "bridge": [
+        "./dist/bridge.d.ts"
+      ]
+    }
+  },
+  "scripts": {
+    "dev": "tsup --watch",
+    "build": "tsup",
+    "test": "vitest",
+    "typecheck": "tsc --noEmit --paths null"
+  },
+  "dependencies": {
+    "@solid-devtools/debugger": "workspace:^0.15.2",
+    "@solid-devtools/shared": "workspace:^0.10.1",
+    "@solid-devtools/transform": "workspace:^0.9.0",
+    "@solid-primitives/utils": "^4.0.0",
+    "type-fest": "^3.2.0"
+  },
+  "peerDependencies": {
+    "solid-js": "^1.6.2"
+  },
+  "packageManager": "pnpm@7.13.0"
+}
